@@ -1,7 +1,8 @@
 import sys
+from collections import deque
 
 n = int(sys.stdin.readline())
-queue = []
+queue = deque()
 
 for i in range(n):
     command = sys.stdin.readline().split()
