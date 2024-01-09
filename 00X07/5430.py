@@ -17,5 +17,6 @@ for i in range(t):
                 dq.popleft()
             else:
                 print("error")
+                
     
     print("[" + ",".join(dq) + "]")
