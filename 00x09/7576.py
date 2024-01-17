@@ -25,11 +25,18 @@ while queue:
             if tom[nx][ny] == 0:
                 tom[nx][ny] = tom[x][y] + 1 # 한 칸 이동
                 queue.append((nx, ny))
+                
 cnt = 0
+flag = False
+
 for i in tom:
     for j in i:
         if j == 0:
-            print(-1)
+            flag = True
             break
     cnt = max(cnt, max(i))
-print(cnt-1)
+
+if flag:
+    print(-1)
+else:
+    print(cnt - 1)
