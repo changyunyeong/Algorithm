@@ -18,22 +18,23 @@ def bfs(graph, a, b):
             nx = x + dx[i]
             ny = y + dy[i]
             
-            if nx < 0 or ny < 0 or nx >= m or ny >= m:
+            if nx < 0 or ny < 0 or nx >= n or ny >= m:
                 continue
+            # nx >= m 이라고 써서 15번 넘게 저지랄 했다...
             
             if graph[nx][ny] == 1:
                 graph[nx][ny] = 0
                 queue.append((nx, ny))
     return
 
-for a in range(t):
+for _ in range(t):
     cnt = 0
-    n, m, k = map(int, input().split())
+    m, n, k = map(int, input().split())
     graph = [[0] * m for _ in range(n)]
     
     for i in range(k):
         x, y = map(int, input().split())
-        graph[x][y] = 1
+        graph[y][x] = 1
         
     for i in range(n):
         for j in range(m):
