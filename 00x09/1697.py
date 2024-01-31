@@ -23,3 +23,6 @@ dist = [0] * (MAX+1)
 n, k = map(int, input().split())
 
 bfs()
+
+## 맨 처음엔 bfs로 접근할 생각 못 함
+## 가장 빠른 시간, 길이 구하는 건 bfs, dfs로 접근
