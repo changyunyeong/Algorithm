@@ -1,7 +1,7 @@
 n, m = map(int, input().split())
 arr = sorted(list(map(int, input().split())))
-visited = [False]*n
 lst = []
+visited = [False]*n
 
 def fun(cur):
     if len(lst) == m:
@@ -9,11 +9,11 @@ def fun(cur):
         return
     
     dup = 0
-    for i in range(n):
+    for i in range(cur, n):
         if not visited[i] and dup!=arr[i]:
             visited[i] = True
-            lst.append(arr[i])
             dup = arr[i]
+            lst.append(arr[i])
             fun(i+1)
             visited[i] = False
             lst.pop()
