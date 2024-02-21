@@ -13,12 +13,12 @@ def merge(start, end):
     idx2 = mid
 
     for i in range(start, end):
-        if idx2 == end:
+        if idx2 == end:  # 두 번째 배열을 다 돌면
             tmp[i] = arr[idx1]
-            idx1 += 1
-        elif idx1 == mid:
+            idx1 += 1 # 첫 번째 배열의 인덱스 증가
+        elif idx1 == mid: # 첫 번째 배열을 다 돌면
             tmp[i] = arr[idx2]
-            idx2 += 1
+            idx2 += 1 # 두 번째 배열의 인덱스 증가
         elif arr[idx1] <= arr[idx2]:
             tmp[i] = arr[idx1]
             idx1 += 1
@@ -38,4 +38,5 @@ def mergeSort(start, end):
     merge(start, end)
 
 mergeSort(0, n)
-print(*arr)        
+for i in range(n):
+    print(arr[i])        
