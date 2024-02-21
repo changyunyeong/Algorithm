@@ -23,5 +23,4 @@ while idx1 < len(a):
 while idx2 < len(b):
     arr.append(b[idx2])
     idx2 += 1
-
 print(*arr)
