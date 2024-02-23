@@ -20,4 +20,4 @@ for i in range(n):
     tmp.append(int(sys.stdin.readline()))
 for i in sorted(tmp):
     print(i)
-# 파이썬은 10000인가 얼마 넘어가면 오류나서 안 되는 듯
+# 파이썬은 100000인가 얼마 넘어가면 오류나서 안 되는 듯
