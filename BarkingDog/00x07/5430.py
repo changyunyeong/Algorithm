@@ -4,19 +4,31 @@ input = sys.stdin.readline
 
 t = int(input())
 
-for i in range(t):
-    p = input().rstrip()
-    n = int(input())
-    dq = deque(input().rstrip()[1:-1].split(",")) # 대괄호를 제외하고 내부의 숫자만 선택
+for _ in range(t):
+    p = input().strip() 
+    n = int(input().strip())
+    arr = input().strip()
     
-    for j in p:
-        if j == "R":
-            dq.reverse()
-        elif j == "D":
-            if len(dq) != 0:
-                dq.popleft()
-            else:
-                print("error")
-                
+    dq = deque(arr[1:-1].split(',')) if arr[1:-1] else deque()  # 빈 배열 처리
+    reverse_flag = False
     
-    print("[" + ",".join(dq) + "]")
+    try:
+        for i in p:
+            if i == 'R':
+                reverse_flag = not reverse_flag
+            elif i == 'D':
+                if dq:
+                    if reverse_flag:
+                        dq.pop()
+                    else:
+                        dq.popleft()
+                else:
+                    raise ValueError
+        
+        if reverse_flag:
+            dq.reverse() # reverse는 O(n)이므로 한 번만 사용
+        
+        print('[' + ",".join(dq)+']')
+        
+    except:
+        print('error')
