@@ -1,30 +1,30 @@
 string = input()
 stack = []
-pre = 0
 cnt = 0
+temp = 1
 
-for i in string:
-    if i == '[':
-        stack.append(i)
-    elif i == ']' and pre == ']':
-        cnt = cnt * 3
+for i in range(len(string)):
+    if string[i] == '(':
+        stack.append(string[i])
+        temp *= 2
+    elif string[i] == '[':
+        stack.append(string[i])
+        temp *= 3
+    elif string[i] == ')':
+        if not stack or stack[-1] == '[':
+            cnt = 0
+            break
+        if string[i-1] == '(':
+            cnt += temp
+        temp //= 2
         stack.pop()
-    elif i == ']' and pre != ']':
-        cnt = cnt + 3
+    else:
+        if not stack or stack[-1] == '(':
+            cnt = 0
+            break
+        if string[i-1] == '[':
+            cnt += temp
+        temp //= 3
         stack.pop()
-    
-    elif i == '(':
-        stack.append(i)
-    elif i == ')' and pre == ')':
-        cnt = cnt * 2
-        stack.pop()
-    elif i == ')' and pre != ')':
-        cnt = cnt + 2
-        stack.pop()
-    
-    pre = i
-    
-if len(stack) != 0:
-    print(0)
-else:
-    print(cnt)
+              
+print(0 if stack else cnt)
